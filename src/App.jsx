@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import Todos from './component/Todos'
 import TodoForm from './component/TodoForm';
+
+export const TodoContext = createContext()
 
 function App() {
   const [todos, setTodos] = useState([
@@ -11,14 +13,19 @@ function App() {
     },
     {
       id: 2,
-      title: 'Have lunch with Guru Domba',
+      title: 'Make a Todo App with React',
       completed: false,
     },
     {
       id: 3,
-      title: 'Study React with Ninja Ken',
+      title: 'Make a Todo App with React and Context API',
       completed: false,
     },
+    {
+      id: 4,
+      title: 'Graduate from University',
+      completed: false,
+    }
   ])
 
   const toggleCompleted = (todoId) => {
@@ -52,21 +59,19 @@ function App() {
   }
   
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>My Todo List</h1>
-      {/* Teruskan function addTodo sebagai props */}
-      <TodoForm addTodo={addTodo} /> 
-      <Todos
-        todos={todos}
-        toggleCompleted={toggleCompleted}
-        deleteTodo={deleteTodo}
-      />
-    </div>
+    <TodoContext.Provider value={{ toggleCompleted, deleteTodo }}>
+      <div style={styles.container}>
+        <h1 style={styles.title}>My Todo List</h1>
+        <div style={styles.box}>
+          <TodoForm addTodo={addTodo} />
+          <Todos todos={todos} />
+        </div>
+      </div>
+    </TodoContext.Provider>
   )
 }
 
 const styles = {
-  
   container: {
     textAlign: 'center',
     padding: '12px',
@@ -74,6 +79,11 @@ const styles = {
   title: {
     fontSize: '36px',
   },
+  box: {
+    border: '1px solid #000',
+    borderRadius: '5px',
+    padding: '10px',
+    marginTop: '10px',
+  },
 }
-
 export default App
