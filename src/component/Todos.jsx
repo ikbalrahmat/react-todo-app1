@@ -23,8 +23,6 @@ Todos.propTypes = {
   toggleCompleted: PropTypes.func.isRequired,
 }
 
-
-//
 const styles = {
   container: {
     width: '40%',
