@@ -32,6 +32,7 @@ const styles = {
     alignItems: 'center',
     padding: '0 20px',
   },
+  
   checkbox: {
     height: '18px',
     width: '18px',
