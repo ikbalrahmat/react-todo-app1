@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import PropTypes from 'prop-types';
 
 const TodoItem = ({ todo, toggleCompleted }) => {
   const getTodoTitleStyle = () => {
@@ -22,6 +23,11 @@ const TodoItem = ({ todo, toggleCompleted }) => {
     </div>
   )
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  toggleCompleted: PropTypes.func.isRequired,
+};
 
 const styles = {
   todoItem: {

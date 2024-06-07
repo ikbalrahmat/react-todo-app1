@@ -1,4 +1,5 @@
-import React from 'react'
+// import React from 'react'
+import PropTypes from 'prop-types'
 import TodoItem from './TodoItem'
 
 const Todos = ({ todos, toggleCompleted }) => {
@@ -9,13 +10,17 @@ const Todos = ({ todos, toggleCompleted }) => {
           <TodoItem
             key={todo.id}
             todo={todo}
-            // Teruskan function toggleCompleted ke component TodoItem
             toggleCompleted={toggleCompleted}
           />
         )
       })}
     </div>
   )
+}
+
+Todos.propTypes = {
+  todos: PropTypes.array.isRequired,
+  toggleCompleted: PropTypes.func.isRequired,
 }
 
 const styles = {
